@@ -1,0 +1,19 @@
+class Solution {
+    public static void rev(int[] arr, int a, int b){
+        while(a<b){
+                int temp=arr[a];
+                arr[a]=arr[b];
+                arr[b]=temp;
+                a++;
+                b--;
+        }
+    }  
+    public void rotate(int[] nums, int k) {
+      int n =nums.length;
+      int j=k%n;
+       rev(nums, 0, n-j-1);
+       rev(nums, n-j, n-1);
+       rev(nums, 0,n-1);
+      
+    }
+}
