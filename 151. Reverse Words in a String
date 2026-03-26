@@ -1,3 +1,4 @@
+//Brute force approach using 2-pointer and substring method
 class Solution {
     public String reverseWords(String s) {
         String str = s.trim();
