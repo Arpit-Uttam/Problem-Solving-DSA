@@ -1,0 +1,19 @@
+// Brute Force Approach
+class Solution {
+    public List<Integer> majorityElement(int[] nums) {
+      int d=nums.length/3;
+      int c=1;
+      List<Integer> a=new ArrayList<>();
+      Arrays.sort(nums);
+      for(int i=1;i<nums.length;i++){
+        if(nums[i]==nums[i-1]) c++;
+        else{
+            if(c>d) a.add(nums[i-1]);
+            c=1;
+        }
+
+      } 
+      if(c>d) a.add(nums[nums.length-1]);
+      return a; 
+    }
+}
