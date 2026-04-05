@@ -1,4 +1,4 @@
-// Simple Approach reverse and compare
+// Simple Approach reverse and compare with the original number
 
 class Solution {
     public boolean isPalindrome(int x) {
