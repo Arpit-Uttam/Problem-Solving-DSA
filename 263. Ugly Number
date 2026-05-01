@@ -1,3 +1,4 @@
+//solved using XOR
 class Solution {
     public boolean isUgly(int n) {
         if(n == 0)
