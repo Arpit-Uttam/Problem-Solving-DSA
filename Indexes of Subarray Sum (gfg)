@@ -1,0 +1,25 @@
+//solved using prefix sum and sliding window
+
+class Solution {
+    static ArrayList<Integer> subarraySum(int[] arr, int target) {
+        // code here
+        ArrayList<Integer> n=new ArrayList<Integer>();
+        int i=0,j=0,sum=0;
+        while(j<arr.length){
+            sum+=arr[j];
+            while(sum>target && i<=j){
+                sum-=arr[i];
+                i++;
+            }
+            if(sum==target){
+                n.add(i+1);
+                n.add(j+1);
+                return n;
+            }
+            j++;
+               
+        }
+        n.add(-1);
+        return n;
+    }
+}
