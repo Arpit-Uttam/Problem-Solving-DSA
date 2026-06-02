@@ -1,0 +1,20 @@
+//solved using cyclic sort
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        int n=nums.length;
+        int i=0;
+        ArrayList<Integer> ans = new ArrayList<>();
+        while(i<n){
+            int a=nums[i];
+            if(a==i+1 || nums[i]==nums[a-1] ) i++;
+            else{
+                nums[i]=nums[a-1];
+                nums[a-1]=a;
+            }
+        }
+        for(i=0;i<nums.length;i++){
+            if(nums[i]!=i+1) ans.add(i+1);
+        }
+        return ans;
+    }
+}
