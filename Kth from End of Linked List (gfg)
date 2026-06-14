@@ -1,0 +1,38 @@
+// bruteforce approach by finding size then starting point
+
+class Solution {
+    int getKthFromLast(Node head, int k) {
+        // code here
+        Node t=head;
+        int l=0;
+        while(t!=null){
+            t=t.next;
+            l++;
+        }
+        if(k>l) return -1;
+        int a=(l-k)+1;
+        t=head;
+        for(int i=1;i<a;i++){
+            t=t.next;
+        }
+        return t.data;
+    }
+}
+
+// optimal approach using slow and fast pointer
+
+class Solution {
+    int getKthFromLast(Node head, int k) {
+        Node slow=head;
+        Node fast=head;
+        for(int i=1;i<=k;i++){
+            if(fast==null) return -1;
+            fast=fast.next;
+        }
+        while(fast!=null){
+            slow=slow.next;
+            fast=fast.next;
+        }
+        return slow.data;
+    }
+}
