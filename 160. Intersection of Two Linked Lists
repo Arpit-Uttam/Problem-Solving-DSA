@@ -1,0 +1,36 @@
+//solved using the slow and fast pointer with size difference
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        int l1=0,l2=0;
+        ListNode t=headA;
+        while(t!=null){
+            t=t.next;
+            l1++;
+        }
+        t=headB;
+        while(t!=null){
+            t=t.next;
+            l2++;
+        }
+        t=headA;
+        int k;
+        if(l1>l2)k=l1-l2;
+        else k=l2-l1;
+        ListNode slow=headB;
+
+        for(int i=1;i<=k;i++){
+            if(l1>l2) t=t.next;
+            else slow=slow.next;
+
+        }
+        while(slow!=null){
+            if(slow==t) {
+                return slow;
+            }
+            slow=slow.next;
+            t=t.next;
+        }
+        return null;
+        
+    }
+}
