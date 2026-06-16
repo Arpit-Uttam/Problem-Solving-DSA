@@ -1,0 +1,26 @@
+class Solution {
+    public int cycleStart(Node head) {
+        Node slow = head;
+        Node fast = head;
+
+        // Detect cycle
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow == fast) {
+                // Find cycle starting point
+                slow = head;
+
+                while (slow != fast) {
+                    slow = slow.next;
+                    fast = fast.next;
+                }
+
+                return slow.data;
+            }
+        }
+
+        return -1; 
+    }
+}
