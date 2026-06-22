@@ -1,0 +1,33 @@
+class Solution {
+    public Node rotate(Node head, int k) {
+        if(head == null || head.next == null) return head;
+
+        // find length
+        int l = 1;
+        Node temp = head;
+        while(temp.next != null){
+            temp = temp.next;
+            l++;
+        }
+
+        k = k % l;
+        if(k == 0) return head;
+
+        // move to kth node
+        Node s = head;
+        for(int i = 1; i < k; i++){
+            s = s.next;
+        }
+
+        // new head
+        Node newHead = s.next;
+
+        // break list
+        s.next = null;
+
+        // connect old tail to old head
+        temp.next = head;
+
+        return newHead;
+    }
+}
