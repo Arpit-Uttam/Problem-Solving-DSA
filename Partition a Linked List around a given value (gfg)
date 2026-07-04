@@ -1,0 +1,38 @@
+class Solution {
+    public Node partition(Node head, int x) {
+        Node d1 = new Node(-1);
+        Node d2 = new Node(-1);
+        Node d3 = new Node(-1);
+
+        Node t1 = d1, t2 = d2, t3 = d3;
+
+        while (head != null) {
+            Node next = head.next;
+            head.next = null;
+
+            if (head.data < x) {
+                t1.next = head;
+                t1 = head;
+            } else if (head.data == x) {
+                t2.next = head;
+                t2 = head;
+            } else {
+                t3.next = head;
+                t3 = head;
+            }
+
+            head = next;
+        }
+
+        // Connect the lists
+        t2.next = d3.next;
+        t1.next = d2.next;
+
+        // If there are no nodes equal to x
+        if (d2.next == null) {
+            t1.next = d3.next;
+        }
+
+        return d1.next;
+    }
+}
