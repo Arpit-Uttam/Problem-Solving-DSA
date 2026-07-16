@@ -1,0 +1,30 @@
+//two stack approach
+class MinStack {
+    Stack<Integer> st;
+    Stack<Integer> stMin;
+
+    public MinStack() {
+    st= new Stack<Integer>();
+    stMin=new Stack<Integer>();   
+    }
+    
+    public void push(int value) {
+       st.push(value);
+       if(stMin.size()==0 || value<stMin.peek()) stMin.push(value);
+       else stMin.push(stMin.peek());
+
+      
+    }
+    public void pop() {
+        st.pop();
+        stMin.pop();
+    }
+    
+    public int top() {
+        return st.peek();
+    }
+    
+    public int getMin() {
+        return stMin.peek();
+    }
+}
