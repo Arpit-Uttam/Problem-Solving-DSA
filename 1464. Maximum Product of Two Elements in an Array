@@ -1,0 +1,30 @@
+//optimised with TC O(n)
+class Solution {
+    public int maxProduct(int[] nums) {
+        int mx1 = Integer.MIN_VALUE;
+        int mx2 = Integer.MIN_VALUE;
+
+        for (int num : nums) {
+            if (num > mx1) {
+                mx2 = mx1;
+                mx1 = num;
+            } else if (num > mx2) {
+                mx2 = num;
+            }
+        }
+        return (mx1-1)*(mx2-1);
+        
+    }
+}
+
+
+// Brute force with TC O(nlogn)
+
+class Solution {
+    public int maxProduct(int[] nums) {
+        int n=nums.length;
+        Arrays.sort(nums);
+        return (nums[n-1]-1)*(nums[n-2]-1);
+        
+    }
+}
