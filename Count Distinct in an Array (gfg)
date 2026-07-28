@@ -1,0 +1,8 @@
+class Solution {
+    static int countDistinct(int arr[]) {
+       
+        HashSet<Integer> set=new HashSet<>();
+        for(int e: arr) set.add(e);
+        return set.size();
+    }
+}
