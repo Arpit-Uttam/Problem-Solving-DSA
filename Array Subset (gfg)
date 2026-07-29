@@ -1,0 +1,64 @@
+//optimised using hashmap
+
+class Solution {
+    public boolean isSubset(int a[], int b[]) {
+      HashMap<Integer, Integer> a1=new HashMap();
+      for(int i:a){
+          if(a1.containsKey(i)){
+              int f=a1.get(i);
+              a1.put(i,f+1);
+          }
+          else 
+          a1.put(i,1);
+      }
+      HashMap<Integer, Integer> b1=new HashMap();
+      for(int i:b){
+          if(!a1.containsKey(i)) return false;
+          if(b1.containsKey(i)){
+              int f=b1.get(i);
+              b1.put(i,f+1);
+          }
+          else 
+          b1.put(i,1);
+      }
+      for(int e:b1.keySet()){
+          int f1=b1.get(e);
+          int f2=a1.get(e);
+          if(f2<f1) return false;
+          
+      }
+      return true;
+    }
+}
+
+
+//brute force using sorting
+class Solution {
+    public boolean isSubset(int a[], int b[]) {
+        Arrays.sort(a);
+        Arrays.sort(b);
+
+        int i = 0, j = 0;
+        int m = a.length, n = b.length;
+
+        while (i < m && j < n) {
+            if (a[i] < b[j]) {
+                // move in a to catch up
+                i++;   
+            }
+            else if (a[i] == b[j]) {
+                i++;
+                // matched one element from b
+                j++;   
+            }
+            else {
+                // a[i] > b[j] → means b[j] is missing
+                return false;
+            }
+        }
+        
+        // all b[] matched
+        return (j == n); 
+    }
+}
+
