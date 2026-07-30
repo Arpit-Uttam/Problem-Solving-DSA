@@ -1,0 +1,16 @@
+class Solution {
+    public int equalPairs(String s) {
+        // code here
+        int ans=0;
+        HashMap<Character, Integer> map=new HashMap<>();
+        for(int i=0;i<s.length();i++){
+            char c=s.charAt(i);
+            map.put(c,map.getOrDefault(c,0)+1);
+        }
+        for(char c:map.keySet()){
+            int f=map.get(c);
+            ans+=f*f;
+        }
+        return ans;
+    }
+}
