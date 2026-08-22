@@ -1,0 +1,15 @@
+class Solution {
+    public boolean checkDivisibility(int n) {
+        int t=n;
+        int sum=0,p=1;
+        while(t!=0){
+            int d=t%10;
+            sum+=d;
+            p*=d;
+            t=t/10;
+
+        }
+        if(n%(sum+p)==0) return true;
+        else return false;
+    }
+}
